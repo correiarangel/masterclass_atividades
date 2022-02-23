@@ -1,0 +1,67 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import '../util/value/const_colors.dart';
+import 'theme_controller.dart';
+
+class CardExercicio extends StatelessWidget {
+  final ThemeController themeController;
+  final String number;
+  final String rote;
+  final String text;
+  const CardExercicio({
+    Key? key,
+    required this.number,
+    required this.rote,
+    required this.text,
+    required this.themeController,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        Modular.to.pushNamed(rote);
+      },
+      child: Card(
+        margin: const EdgeInsets.only(
+          left: 12.0,
+          right: 18.0,
+          top: 18.0,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50.0),
+        ),
+        child: Flex(
+          direction: Axis.horizontal,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: CircleAvatar(
+                backgroundColor: ConstColors.colorPrimary,
+                child: Text(
+                  number,
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: ConstColors.colorCardLight,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
