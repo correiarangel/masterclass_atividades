@@ -71,6 +71,11 @@ import 'package:flutter/material.dart';
 import '../../../shared/util/value/const_colors.dart';
 
 class FieldCpf {
+/*   final maskFormatter = MaskTextInputFormatter(
+    mask: '###.###.###-##',
+  );
+ */
+
   Widget build({
     required TextInputType textInputType,
     required String hintText,
@@ -86,11 +91,14 @@ class FieldCpf {
         top: 18.0,
       ),
       child: TextField(
+        style: const TextStyle(fontSize: 28.0),
         onChanged: onChanged,
         controller: editTextController,
         keyboardType: textInputType,
+       // inputFormatters: [maskFormatter],
         decoration: InputDecoration(
           errorStyle: TextStyle(
+            fontSize: 18.0,
             color: errorText() == 'CPF VALIDO ;)'
                 ? Colors.green.shade600
                 : Colors.red.shade600,
@@ -103,6 +111,7 @@ class FieldCpf {
             8.0,
             10.0,
           ),
+
           filled: true,
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(

@@ -4,7 +4,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../shared/controllers/theme_controller.dart';
-import 'components/alert_validade.dart';
 import 'components/field_cpf.dart';
 import 'cpf_generator_store.dart';
 
@@ -60,7 +59,28 @@ class CpfGeneratorPageState extends State<CpfGeneratorPage> {
       body: Column(
         children: <Widget>[
           const SizedBox(height: 28.0),
-          AlertValidade(store: store),
+          Observer(
+            builder: (context) {
+              return Visibility(
+                visible: store.checkError(msg: store.validateCPF()!),
+                child: Column(
+                  children: <Widget>[
+                    store.msg == 'CPF VALIDO ;)'
+                        ? const Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                            size: 80.0,
+                          )
+                        : const Icon(
+                            Icons.error,
+                            color: Colors.red,
+                            size: 80.0,
+                          )
+                  ],
+                ),
+              );
+            },
+          ),
           const SizedBox(height: 18.0),
           Observer(
             builder: (context) {
@@ -68,11 +88,10 @@ class CpfGeneratorPageState extends State<CpfGeneratorPage> {
                 textEditController.text = store.cpftext!;
               }
               return field.build(
-               
                 onChanged: store.changeCpf,
                 editTextController: textEditController,
                 textInputType: TextInputType.number,
-                hintText: 'Digite um CPF',
+                hintText: 'CPF somente numeros',
                 lblText: 'CPF:',
                 errorText: store.validateCPF,
               );
@@ -137,6 +156,7 @@ class CpfGeneratorPageState extends State<CpfGeneratorPage> {
               store.toChangesIsValidCpf(value: false);
               textEditController.clear();
               store.changeCpf('');
+              store.chackMsg('');
             },
           ),
         ],

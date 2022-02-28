@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:intl/intl.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mobx/mobx.dart';
 
 part 'cpf_generator_store.g.dart';
@@ -28,6 +30,8 @@ abstract class _CpfGeneratorStoreBase with Store {
     } else if (cpftext!.length > 11) {
       return "Digite 11 numeros não mais !";
     } else if (cpftext!.length == 11) {
+      /*var _cpf = cpftext?.replaceAll('.', '');
+      var _cpfNumb = _cpf!.replaceAll("-", ""); */
       return validateMaster(cpf: cpftext!);
     }
   }
@@ -49,11 +53,14 @@ abstract class _CpfGeneratorStoreBase with Store {
 
   String? validateMaster({required String cpf}) {
     if (checkEqualityNumber(value: cpf) == false) {
+      chackMsg('CPF IVALIDO :(');
       return 'CPF IVALIDO :(';
     } else {
       if (validateDigits(valueCPF: cpf) == false) {
+        chackMsg('CPF IVALIDO :(');
         return 'CPF IVALIDO :(';
       } else {
+        chackMsg('CPF VALIDO ;)');
         return 'CPF VALIDO ;)';
       }
     }
@@ -93,13 +100,21 @@ abstract class _CpfGeneratorStoreBase with Store {
     required int digit2,
     required String value,
   }) {
-    return digit1 == int.parse(value[9]) && digit2 == int.parse(value[10]);
+    return digit1 == int.parse(value[9]) &&
+        digit2 ==
+            int.parse(
+              value[10],
+            );
   }
 
   bool checkEqualityNumber({required String value}) {
-    final isEquals = value
-        .split('')
-        .every((element) => int.parse(element) == int.parse(value[0]));
+    final isEquals = value.split('').every(
+          (element) =>
+              int.parse(element) ==
+              int.parse(
+                value[0],
+              ),
+        );
     if (isEquals) {
       return false;
     } else {
@@ -123,6 +138,15 @@ abstract class _CpfGeneratorStoreBase with Store {
     return numberCPF;
   }
 
+  String convertFormatCPF({required String cpf}) {
+    final maskFormatter = MaskTextInputFormatter(
+      mask: '###.###.###-##',
+      type: MaskAutoCompletionType.lazy,
+    );
+    print("ZX ${maskFormatter.maskText(cpf)}");
+    return maskFormatter.unmaskText(cpf);
+  }
+
   String gerarRemdon() {
     Random _rendomNunber = Random();
     var listNumber = [];
@@ -142,4 +166,17 @@ abstract class _CpfGeneratorStoreBase with Store {
     listNumber.add(numb2Digts);
     return '${listNumber[0]}${listNumber[1]}${listNumber[2]}${listNumber[3]}';
   }
+
+  bool checkError({required String msg}) {
+    if (msg == 'CPF VALIDO ;)' || msg == 'CPF IVALIDO :(') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @observable
+  String msg = '';
+  @action
+  String chackMsg(String value) => msg = value;
 }

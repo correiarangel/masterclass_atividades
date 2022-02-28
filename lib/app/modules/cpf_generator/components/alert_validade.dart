@@ -9,22 +9,37 @@ class AlertValidade extends StatelessWidget {
     Key? key,
     required this.store,
   }) : super(key: key);
+  // 'CPF IVALIDO :(';
+  // 'CPF VALIDO ;)';
+  bool checkError() {
+    if (store.validateCPF() == 'CPF VALIDO ;)' ||
+        store.validateCPF() == 'CPF IVALIDO :(') {
+      return true;
+    } else   {
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (_) {
-      return Visibility(
-        visible: store.isValidCpf,
-        child: Column(
-          children: const <Widget>[
-            Icon(
-              Icons.check_circle,
-              color: Colors.green,
-              size: 80.0,
-            ),
-          ],
-        ),
-      );
-    });
+    var msg = store.validateCPF();
+    return Visibility(
+      visible: checkError(),
+      child: Column(
+        children: <Widget>[
+          msg == 'CPF VALIDO ;)'
+              ? const Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                  size: 80.0,
+                )
+              : const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                  size: 80.0,
+                )
+        ],
+      ),
+    );
   }
 }

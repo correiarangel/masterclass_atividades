@@ -1,4 +1,6 @@
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:masterclass_atividades/app/modules/cpf_generator/cpf_generator_store.dart';
 
@@ -166,7 +168,41 @@ void main() {
     expect(_resp.isEmpty, false);
     expect(_resp.length == 11, true);
   });
+
+  test('Deve retornar String com mensage (chackMsg) ', () async {
+    var _resp = store.chackMsg('CPF VALIDO ;)');
+    expect(_resp, isA<String>());
+    expect(_resp.isEmpty, false);
+    expect(_resp.length == 13, true);
+  });
+
+  test('Deve retornar String vazia (chackMsg) ', () async {
+    var _resp = store.chackMsg('');
+    expect(_resp, isA<String>());
+    expect(_resp.isEmpty, true);
+    expect(_resp, '');
+  });
+
+  test('Deve caso msg setada "CPF IVALIDO :(" retornar bool true (checkError) ',
+      () async {
+    var _resp = store.checkError(msg: 'CPF IVALIDO :(');
+    expect(_resp, isA<bool>());
+    expect(_resp, true);
+  });
+
+  test('Deve caso msg setada "CPF IVALIDO :(" retornar bool true (checkError) ',
+      () async {
+    var _resp = store.checkError(msg: 'CPF IVALIDO :(');
+    expect(_resp, isA<bool>());
+    expect(_resp, true);
+  });
+
+  test(
+      'Deve caso msg diferente "CPF IVALIDO :(" ou "CPF IVALIDO :(" '
+      'retornar bool false (checkError) ', () async {
+    var _resp = store.checkError(msg: '');
+    expect(_resp, isA<bool>());
+    expect(_resp, false);
+
+  });
 }
-
-
-
