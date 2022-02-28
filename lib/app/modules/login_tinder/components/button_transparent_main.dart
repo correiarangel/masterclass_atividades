@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../shared/util/value/const_colorsII.dart';
+import '../../../shared/util/value/const_colors2.dart';
 
 class ButtonTransparent extends StatelessWidget {
   final VoidCallback callback;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colorsII.dart';
+import 'package:masterclass_atividades/app/shared/util/value/const_colors2.dart';
 
 
 import 'components/button_transparent_main.dart';

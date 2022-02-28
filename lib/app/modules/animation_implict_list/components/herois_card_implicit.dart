@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:masterclass_atividades/app/modules/animation_implict_list/controllers/state_animation.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colors.dart';
+
+import '../../../shared/util/value/const_colors.dart';
+
+import '../controllers/state_animation.dart';
 
 class HeroiCardImplict extends StatefulWidget {
   final String name;

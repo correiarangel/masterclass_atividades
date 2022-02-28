@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colorsII.dart';
+import 'package:masterclass_atividades/app/shared/util/value/const_colors2.dart';
 
 
 class DialogCustom extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masterclass_atividades/app/modules/animation_exlict_list/animation_exlict_list_store.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colors.dart';
+import '../../../shared/util/value/const_colors.dart';
 
 import '../animation_exlict_button_store.dart';
 
@@ -113,6 +112,8 @@ class _ButtonAnimatExplictState extends State<ButtonAnimatExplict>
 
   @override
   Widget build(BuildContext context) {
+
+    
     //timeDilation = 8.0;
     return Padding(
       padding: EdgeInsets.only(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colors.dart';
 
 import '../../../shared/models/heroi_model.dart';
 import 'explict_herois_card.dart';
@@ -25,7 +24,7 @@ class ListViewExplicit extends StatelessWidget {
               itemCount: heroiModels!.length,
               itemBuilder: (context, index) {
                 HeroiModel heroi = heroiModels![index];
-                print('${heroi.name!}');
+
                 return HeroiCardExplict(
                   name: heroi.name!,
                   poder: heroi.poder!,

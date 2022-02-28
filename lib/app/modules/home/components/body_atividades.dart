@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:masterclass_atividades/app/shared/util/value/const_srtring_url.dart';
 
 import '../../../shared/controllers/theme_controller.dart';
 import '../../../shared/util/value/const_srtring.dart';
@@ -30,7 +31,7 @@ class BodyAtividades extends StatelessWidget {
             textButton: 'Ver mais',
             textLink: 'Acessar código fonte',
             description: ConstString.descriptionI,
-            urlLink: 'www.goole.com.br',
+            urlLink: ConstStringUrl.repositMasterClass,
             route: '/animationsPage',
           ),
           const SizedBox(height: 28.0),

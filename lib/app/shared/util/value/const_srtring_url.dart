@@ -12,4 +12,5 @@ static const String linkdin =
 static const String guitHub = 'https://br.linkedin.com/in/marcos-fabiano-correia-rangel';
 static const String whatsap ='https://wa.me/551999106907';
 static const String repositories = 'https://github.com/correiarangel?tab=repositories';
+static const String repositMasterClass = 'https://github.com/correiarangel/masterclass_atividades';
 }

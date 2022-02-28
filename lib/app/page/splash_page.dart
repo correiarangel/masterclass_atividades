@@ -9,17 +9,35 @@ class SplashPage extends StatefulWidget {
   SplashPageState createState() => SplashPageState();
 }
 
-class SplashPageState extends State<SplashPage> {
+class SplashPageState extends State<SplashPage>
+    with SingleTickerProviderStateMixin {
   Future<void> initHome() async {
-    await Future.delayed(const Duration(seconds: 3), () async {
+    Modular.to.pushReplacementNamed('/home');
+    /*await Future.delayed(const Duration(seconds: 3), () async {
       Modular.to.pushReplacementNamed('/home');
-    });
+    }); */
   }
+
+  late Animation<double> animation;
+
+  late AnimationController controller;
 
   @override
   void initState() {
     super.initState();
-    initHome();
+
+    controller =
+        AnimationController(duration: const Duration(seconds: 3), vsync: this);
+
+    animation = Tween<double>(begin: 0.0, end: 80.0).animate(controller)
+      ..addListener(() {
+        setState(() {
+          // The state that has changed here is the animation object’s value.
+        });
+        if (controller.isCompleted) initHome();
+      });
+
+    controller.forward();
   }
 
   @override
@@ -27,13 +45,13 @@ class SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-           Image.asset(
-              "images/logo/logo@2x.png",
-              width: 70,
-              height: 70,
-            ),
+          Image.asset(
+            "images/logo/logo@2x.png",
+            width: animation.value,
+            height: animation.value,
+          ),
           const SizedBox(width: 8.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,19 +61,17 @@ class SplashPageState extends State<SplashPage> {
                 'flutterando',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                   // color: ConstColors.colorHighLightDark,
-                    fontSize: 42.0,
-                    fontWeight: FontWeight.w600,
-                    ),
-              ),
-              Text(
-                'Masterclass',
-                style: TextStyle(
-                 // color: ConstColors.colorHighLightDark,
-                  fontSize: 22.0,
+                  // color: ConstColors.colorHighLightDark,
+                  fontSize: 42.0,
+                  fontWeight: FontWeight.w600,
                 ),
-                textAlign: TextAlign.start
               ),
+              Text('Masterclass',
+                  style: TextStyle(
+                    // color: ConstColors.colorHighLightDark,
+                    fontSize: 22.0,
+                  ),
+                  textAlign: TextAlign.start),
             ],
           ),
         ],

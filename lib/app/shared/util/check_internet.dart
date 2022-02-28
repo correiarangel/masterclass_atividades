@@ -11,7 +11,7 @@ class CheckInternet implements ICheckInternet {
     if (Platform.isAndroid || Platform.isIOS) {
       try {
         final result = await InternetAddress.lookup('www.google.com.br')
-            .timeout(Duration(seconds: 10));
+            .timeout(const Duration(seconds: 10));
         if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
           isNet = true;
         } else {

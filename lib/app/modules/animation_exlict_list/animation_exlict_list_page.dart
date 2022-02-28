@@ -1,14 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:masterclass_atividades/app/modules/animation_exlict_button/animation_exlict_button_page.dart';
-import 'package:masterclass_atividades/app/modules/animation_exlict_button/animation_exlict_button_store.dart';
-import 'package:masterclass_atividades/app/modules/animation_exlict_button/components/button_animat_explict.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colors.dart';
+
 import '../../shared/controllers/theme_controller.dart';
 import 'animation_exlict_list_store.dart';
-import 'package:flutter/material.dart';
-
 import 'components/listview_explict.dart';
 
 class AnimationExpictListPage extends StatefulWidget {
@@ -21,11 +17,12 @@ class AnimationExpictListPage extends StatefulWidget {
 class AnimationExplictListPageState extends State<AnimationExpictListPage> {
   final AnimationExplictListStore store = Modular.get();
   final ThemeController themeController = Modular.get();
-    @override
+  @override
   void initState() {
     store.fillHeroiModel();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -13,7 +13,8 @@ class OptionsButton extends StatelessWidget {
   final double left;
   final VoidCallback callback;
 
-    OptionsButton({
+    // ignore: use_key_in_widget_constructors
+    const OptionsButton({
     required this.btnicon,
     required this.iconcor,
     required this.btncor,

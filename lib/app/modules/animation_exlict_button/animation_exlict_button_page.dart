@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:masterclass_atividades/app/shared/controllers/theme_controller.dart';
+import '../../shared/controllers/theme_controller.dart';
 import '../../shared/util/value/const_colors.dart';
 
 import 'animation_exlict_button_store.dart';
@@ -20,16 +20,15 @@ class AnimationExplictButtonPage extends StatefulWidget {
 
 class AnimationExplictButtonPageState
     extends State<AnimationExplictButtonPage> {
-
   final AnimationExplictButtonStore store = Modular.get();
- final ThemeController themeController = Modular.get();
+  final ThemeController themeController = Modular.get();
   // ignore: unused_field
   final _duration = const Duration(seconds: 3);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         leading: IconButton(
+        leading: IconButton(
           icon: const Icon(
             Icons.keyboard_arrow_left,
             size: 42.0,

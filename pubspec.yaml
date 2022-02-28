@@ -23,7 +23,13 @@ dependencies:
   url_launcher: ^6.0.20
   font_awesome_flutter: ^9.2.0
   percent_indicator: ^4.0.0
-
+  flutter_launcher_icons: ^0.9.2
+  
+flutter_icons:
+  image_path_ios: "images/logo/logo.png"
+  image_path_android: "images/logo/logo.png"
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colorsII.dart';
+import 'package:masterclass_atividades/app/shared/util/value/const_colors2.dart';
 import 'login_tinder_store.dart';
 import 'package:flutter/material.dart';
 

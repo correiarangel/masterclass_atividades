@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'controllers/state_animation.dart';
 
 import 'animation_implict_list_page.dart';
 import 'controllers/animation_implict_list_store.dart';

@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:masterclass_atividades/app/shared/controllers/card_exercicio.dart';
-import '../home/components/card_repository.dart';
+import '../../shared/controllers/card_exercicio.dart';
 
 import '../../shared/controllers/theme_controller.dart';
 
 import 'playground_store.dart';
 
 class PlaygroundPage extends StatefulWidget {
-  final String title;
-  const PlaygroundPage({Key? key, this.title = 'PlaygroundPage'})
-      : super(key: key);
+  const PlaygroundPage({Key? key}) : super(key: key);
   @override
   PlaygroundPageState createState() => PlaygroundPageState();
 }
@@ -57,26 +54,28 @@ class PlaygroundPageState extends State<PlaygroundPage> {
         ),
       ),
       body: Column(
-          
-          children: [
-           
-            CardExercicio(
-              number: '1',
-              rote: '/loginGetMoneyPage',
-              text: 'Exercício 01',
-              themeController: themeController,
-            ),
-     
-            CardExercicio(
-              number: '2',
-              rote: '/loginTinderPage',
-              text: 'Exercício 01',
-              themeController: themeController,
-            ),
-            const SizedBox(height: 28.0),
-          ],
-        ),
-      
+        children: [
+          CardExercicio(
+            number: '1',
+            rote: '/loginGetMoneyPage',
+            text: 'Exercício 01',
+            themeController: themeController,
+          ),
+          CardExercicio(
+            number: '2',
+            rote: '/loginTinderPage',
+            text: 'Exercício 01',
+            themeController: themeController,
+          ),
+          CardExercicio(
+            number: '3',
+            rote: '/generatCpfPage',
+            text: 'Exercício 01',
+            themeController: themeController,
+          ),
+          const SizedBox(height: 28.0),
+        ],
+      ),
     );
   }
 }
