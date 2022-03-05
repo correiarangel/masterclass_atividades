@@ -65,9 +65,9 @@ abstract class HomeStoreBase with Store {
     return isNet = await testInternet.isInternet();
   }
 
-  List<Tecnologiodel> fillListHoriz() {
+  List<TecnologiModel> fillListHoriz() {
    return ConstList.listTecnologi.map((tcmodel) {
-      return Tecnologiodel.fromMap(tcmodel);
+      return TecnologiModel.fromMap(tcmodel);
     }).toList();
   }
 }

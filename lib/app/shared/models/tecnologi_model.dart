@@ -1,15 +1,29 @@
 import 'dart:convert';
 
-class Tecnologiodel {
+import 'package:flutter/material.dart';
+@immutable
+class TecnologiModel {
   final int id;
   final String imgUrl;
   final String name;
 
-  Tecnologiodel({
+  const TecnologiModel({
     required this.id,
     required this.imgUrl,
     required this.name,
   });
+
+  TecnologiModel copyWith({
+    int? id,
+    String? imgUrl,
+    String? name,
+  }) {
+    return TecnologiModel(
+      id: id ?? this.id,
+      imgUrl: imgUrl ?? this.imgUrl,
+      name: name ?? this.name,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -19,8 +33,8 @@ class Tecnologiodel {
     };
   }
 
-  factory Tecnologiodel.fromMap(Map<String, dynamic> map) {
-    return Tecnologiodel(
+  factory TecnologiModel.fromMap(Map<String, dynamic> map) {
+    return TecnologiModel(
       id: map['id'] ?? -1,
       imgUrl: map['imgUrl'] ?? '',
       name: map['name'] ?? '',

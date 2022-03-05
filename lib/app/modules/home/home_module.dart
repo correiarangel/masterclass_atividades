@@ -24,5 +24,6 @@ class HomeModule extends Module {
     ModuleRoute(Modular.initialRoute, module: PlaygroundModule()),
     ModuleRoute(Modular.initialRoute, module: AnimationsModule()),
     ModuleRoute(Modular.initialRoute, module: MockupModule()),
+    
   ];
 }

@@ -1,4 +1,7 @@
-import 'package:masterclass_atividades/app/modules/cpf_generator/cpf_generator_module.dart';
+import 'package:masterclass_atividades/app/modules/todo/todo_module.dart';
+
+import '../cpf_generator/cpf_generator_module.dart';
+
 
 import '../login_get_money/login_get_money_module.dart';
 import '../login_tinder/login_tinder_module.dart';
@@ -20,5 +23,6 @@ class PlaygroundModule extends Module {
     ModuleRoute(Modular.initialRoute, module: LoginGetMoneyModule()),
     ModuleRoute(Modular.initialRoute, module: LoginTinderModule()),
     ModuleRoute(Modular.initialRoute, module: CpfGeneratorModule()),
+    ModuleRoute(Modular.initialRoute, module: TodoModule()),
   ];
 }

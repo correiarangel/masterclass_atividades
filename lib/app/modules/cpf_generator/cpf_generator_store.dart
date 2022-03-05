@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mobx/mobx.dart';
 
@@ -143,7 +143,7 @@ abstract class _CpfGeneratorStoreBase with Store {
       mask: '###.###.###-##',
       type: MaskAutoCompletionType.lazy,
     );
-    print("ZX ${maskFormatter.maskText(cpf)}");
+    debugPrint("ZX ${maskFormatter.maskText(cpf)}");
     return maskFormatter.unmaskText(cpf);
   }
 

@@ -73,6 +73,12 @@ class PlaygroundPageState extends State<PlaygroundPage> {
             text: 'Exercício 01',
             themeController: themeController,
           ),
+          CardExercicio(
+            number: '4',
+            rote: '/todoPage',
+            text: 'Exercício 01',
+            themeController: themeController,
+          ),
           const SizedBox(height: 28.0),
         ],
       ),
