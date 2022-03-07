@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import '../../../shared/util/value/const_srtring_url.dart';
 
 import '../datasources/remote_todo_datasource.dart';
 import '../models/todo_model.dart';
@@ -8,9 +9,9 @@ class TodoReposytory {
 
   TodoReposytory(this.remoteTodoDataSource);
 
-  Future<List<TodoModel>> getTodos({required url}) async {
+  Future<List<TodoModel>> getTodos() async {
     final Response? response = await remoteTodoDataSource.getTodos(
-      url: url,
+      url:  ConstStringUrl.todosAllUrl,
     );
     if (response != null && response.statusCode == 200) {
       var list = response.data as List;
@@ -25,8 +26,25 @@ class TodoReposytory {
       return [];
     }
   }
+/*
+  Future <Map>? editToto({
+    required String id,
+    required Map<String, dynamic> param,
+  }) async {
+    final Response? response = await remoteTodoDataSource.editar(
+      url: ConstStringUrl.todosAllUrl,
+      id: id,
+      param: param,
+    );
+    if (response != null && response.statusCode == 200) {
 
-  Future <Map> editToto({
+      return response.data;
+    } else {
+      return {};
+    }
+  }
+*/
+  Future <Map>? editToto({
     required String id,
     required url,
     required Map<String, dynamic> param,

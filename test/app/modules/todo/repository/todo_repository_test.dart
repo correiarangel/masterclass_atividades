@@ -1,55 +1,90 @@
-import 'package:dio/dio.dart';
-import 'package:dio/native_imp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:masterclass_atividades/app/modules/todo/datasources/remote_todo_datasource.dart';
 import 'package:masterclass_atividades/app/modules/todo/models/todo_model.dart';
 import 'package:masterclass_atividades/app/modules/todo/repository/todo_repository.dart';
-import 'package:masterclass_atividades/app/shared/services/todo_service.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_srtring_url.dart';
 
-class TodoRepositoryMock extends TodoReposytory {
-  TodoRepositoryMock(RemoteTodoDataSource remoteTodoDataSource)
-      : super(remoteTodoDataSource);
-}
+import 'package:mocktail/mocktail.dart';
+
+class TodoRepositoryMock extends Mock implements TodoReposytory {}
 
 void main() {
-  final repository = TodoRepositoryMock(
-    RemoteTodoDataSource(
-      TodoService(
-        DioForNative(),
-      ),
-    ),
-  );
-
+  late TodoRepositoryMock repository;
+  setUpAll(() {
+    debugPrint("Iniciando Suite testes TodoReposytory");
+  });
   setUp(() {
-    debugPrint("Iniciando Suite tests TodoReposytory");
+    debugPrint("Iniciando tests");
+    repository = TodoRepositoryMock();
   });
 
   tearDown(() {
-    debugPrint("Finalizando Suite tests TodoReposytory");
+    debugPrint("Finalizando tests");
+  });
+  tearDownAll(() {
+    debugPrint("Finalizando Suite testes TodoReposytory");
+  });
+  group('Caminho Filiz getTodos', () {
+    test('Deve retornar Lista TodoModel com (3 posições) ...', () async {
+      when(() => repository.getTodos()).thenAnswer((invocation) async => todos);
+      expect(todos, isA<List<TodoModel>>());
+      expect(todos.length, 3);
+    });
+
+    test('Deve retornar title igual (Iniciar Projeto com Teste)  ...',
+        () async {
+      when(() => repository.getTodos()).thenAnswer((invocation) async => todos);
+      expect(todos[0].title, 'Iniciar Projeto com Teste');
+    });
+    test('Deve retornar (isChecked igual false) ...', () async {
+      when(() => repository.getTodos()).thenAnswer((invocation) async => todos);
+      expect(todos[0].isChecked, false);
+    });
   });
 
-  test(
-      'Deve retornar Lista do tipo TodoModel com 2 ou mais posições, '
-      'title = Iniciar Projeto com Teste e isChecked = false ...', () async {
-    var todos =
-        await repository.getTodos(url: ConstStringUrl.todosAllLocalhost);
-
-    expect(todos, isA<List<TodoModel>>());
-    expect(todos.length >= 2, true);
-    expect(todos[0].title, 'Iniciar Projeto com Teste');
-    expect(todos[0].isChecked, true);
+  group('Caminho Triste getTodos', () {
+    test('Deve retornar Lista vazia []  ...', () async {
+      when(() => repository.getTodos())
+          .thenAnswer((invocation) async => todosZiro);
+      expect(todosZiro, []);
+    });
   });
 
-  test(
-      'Deve editar valor,retorna  statusCode, 200, data tipo Map'
-      ', isChecked igual true...', () async {
-    var id = 'abe4c710-9bd1-11ec-ae34-6d0fc1ab51df';
-    var param = {"isChecked": true};
-    var response = await repository.editToto(
-        url: ConstStringUrl.todosAllLocalhost, id: id, param: param);
-    expect(response, isA<Map>());
-    expect(response['isChecked'], true);
+  group('Caminho Feliz editTodo', () {
+    test('Deve retorna Map com parametro isChecked true ...', () async {
+      when(() => repository.editToto(id: '1', url: 'api', param: {}))
+          .thenAnswer((invocation) async => resMap);
+      expect(resMap, isA<Map>());
+      expect(resMap['isChecked'], true);
+    });
+  });
+
+  group('Caminho Triste editTodo', () {
+    test('Deve retorna Null...', () async {
+      var response;
+      when(() => repository.editToto(id: '1', url: 'api', param: {}))
+          .thenAnswer((invocation) async => response);
+      expect(response, null);
+    });
   });
 }
+
+const Map resMap = {
+  "isChecked": true,
+  "id": "abe4c710-9bd1-11ec-ae34-6d0fc1ab51df",
+};
+
+const List<TodoModel> todosZiro = [];
+const List<TodoModel> todos = [
+  TodoModel(
+      id: 'abe4c710-9bd1-11ec-ae34-6d0fc1ab51df',
+      title: 'Iniciar Projeto com Teste',
+      isChecked: false),
+  TodoModel(
+      id: 'f349c150-9bd1-11ec-ae34-6d0fc1ab51df',
+      title: 'IImplementar Dartion',
+      isChecked: false),
+  TodoModel(
+      id: 'fd958ef0-9bd1-11ec-ae34-6d0fc1ab51df',
+      title: 'Pesquisar Stream',
+      isChecked: false),
+];

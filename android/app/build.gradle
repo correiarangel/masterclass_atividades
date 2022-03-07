@@ -29,7 +29,7 @@ android {
     compileSdkVersion flutter.compileSdkVersion
 
     compileOptions {
-        compileSdkVersion(30)
+        compileSdkVersion(31)
         buildToolsVersion("30.0.3")
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

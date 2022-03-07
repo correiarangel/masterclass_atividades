@@ -17,24 +17,27 @@ class ButtonBarNavigation extends StatelessWidget {
           currentIndex: controller.currentIndex,
           onTap: controller.toChangesPage,
           items: const [
+
             BottomNavigationBarItem(
+
               icon: FaIcon(FontAwesomeIcons.bullseye),
               // ignore: deprecated_member_use
-              title: Text("Atividades"),
+              label: "Atividades",
             ),
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.github,
               ),
               // ignore: deprecated_member_use
-              title: Text("GuitHub"),
+              label: "GuitHub",
             ),
+            
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.userAlt,
               ),
               // ignore: deprecated_member_use
-              title: Text("Sobre Dev"),
+              label: "Sobre Dev",
             ),
           ],
         );

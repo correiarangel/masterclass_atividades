@@ -7,12 +7,13 @@ class RemoteTodoDataSource {
 
   RemoteTodoDataSource(this.service);
 
-  Future<Response> getTodos({required url}) async {
+  Future<Response>? getTodos({required url}) async {
     final response = await service.get(url: url);
+    response;
     return response;
   }
 
-  Future<Response> addTodo({
+  Future<Response>? addTodo({
     required url,
     required Map<String, dynamic> param,
   }) async {
@@ -23,7 +24,7 @@ class RemoteTodoDataSource {
     return response;
   }
 
-  Future<Response> excluir({
+  Future<Response>? excluir({
     required String id,
     required String url,
   }) async {
@@ -34,7 +35,7 @@ class RemoteTodoDataSource {
     return response;
   }
 
-  Future<Response> editar({
+  Future<Response>? editar({
     required String id,
     required String url,
     required Map<String, dynamic> param,

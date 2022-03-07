@@ -91,7 +91,7 @@ class _TodoPageState extends State<TodoPage> {
                                 id: todo.id,
                               );
           
-                              debugPrint('EDITOU : ${todoStore.mapEdit["isChecked"]} ....');
+                              debugPrint('EDITOU : ${todoStore.mapEdit} ....');
                             },
                           );
                         },

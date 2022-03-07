@@ -15,7 +15,7 @@ class TodoService {
       log('GET/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),
-        data: [],
+        data: [e],
         statusCode: 500,
       );
     }
@@ -35,7 +35,7 @@ class TodoService {
       log('PUT/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),
-        data: [],
+        data: [e],
         statusCode: 500,
       );
     }
@@ -53,7 +53,7 @@ class TodoService {
       log('POST/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),
-        data: [],
+        data: [e],
         statusCode: 500,
       );
     }
@@ -72,8 +72,9 @@ class TodoService {
       log('DELETE/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),
-        data: [],
+        data: [e],
         statusCode: 500,
+        
       );
     }
     return response;

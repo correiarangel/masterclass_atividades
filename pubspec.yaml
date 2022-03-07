@@ -41,10 +41,10 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
-  mobx_codegen: ^2.0.5+2
+  mobx_codegen: ^2.0.4
   modular_test: ^1.0.1+1
   build_runner: ^2.1.7
-  mocktail: ^0.0.1-dev.12
+  mocktail: ^0.3.0
 
 # The following section is specific to Flutter.
 flutter:

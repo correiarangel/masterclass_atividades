@@ -12,7 +12,7 @@ class TodoStore extends ChangeNotifier {
   TodoStore(this.repository);
 
   Future<List<TodoModel>> getAllTodos() async {
-    todos = await repository.getTodos(url: ConstStringUrl.todosAllUrl);
+    todos = await repository.getTodos();
     notifyListeners();
     return todos;
   }
@@ -21,7 +21,7 @@ class TodoStore extends ChangeNotifier {
 
     final param = {"isChecked": !valueChecked};
     final Map map = await repository.editToto(
-        id: id, url: ConstStringUrl.todosAllUrl, param: param);
+        id: id, url: ConstStringUrl.todosAllUrl, param: param)!;
     notifyListeners();
     await getAllTodos();
     return map;
