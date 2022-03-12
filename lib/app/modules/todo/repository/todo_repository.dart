@@ -9,9 +9,9 @@ class TodoReposytory {
 
   TodoReposytory(this.remoteTodoDataSource);
 
-  Future<List<TodoModel>> getTodos() async {
+  Future<List<TodoModel>>? getTodos() async {
     final Response? response = await remoteTodoDataSource.getTodos(
-      url:  ConstStringUrl.todosAllUrl,
+      url: ConstStringUrl.todosAllUrl,
     );
     if (response != null && response.statusCode == 200) {
       var list = response.data as List;
@@ -26,36 +26,45 @@ class TodoReposytory {
       return [];
     }
   }
-/*
-  Future <Map>? editToto({
+
+  Future<Map>? editToto({
     required String id,
     required Map<String, dynamic> param,
   }) async {
     final Response? response = await remoteTodoDataSource.editar(
-      url: ConstStringUrl.todosAllUrl,
+      url:  ConstStringUrl.todosAllUrl,
       id: id,
       param: param,
     );
     if (response != null && response.statusCode == 200) {
-
       return response.data;
     } else {
       return {};
     }
   }
-*/
-  Future <Map>? editToto({
-    required String id,
-    required url,
+
+  Future<Map>? addToto({
     required Map<String, dynamic> param,
   }) async {
-    final Response? response = await remoteTodoDataSource.editar(
-      url: url,
-      id: id,
+    final Response? response = await remoteTodoDataSource.addTodo(
+      url: ConstStringUrl.todosAllUrl,
       param: param,
     );
     if (response != null && response.statusCode == 200) {
+      return response.data;
+    } else {
+      return {};
+    }
+  }
 
+    Future<Map>? excluirToto({
+    required String id,
+  }) async {
+    final Response? response = await remoteTodoDataSource.excluir(
+      url: ConstStringUrl.todosAllUrl,
+      id: id,
+    );
+    if (response != null && response.statusCode == 200) {
       return response.data;
     } else {
       return {};

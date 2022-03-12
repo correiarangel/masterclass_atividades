@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:masterclass_atividades/app/modules/todo/repository/todo_repository.dart';
-import 'package:masterclass_atividades/app/shared/services/todo_service.dart';
+import 'repository/todo_repository.dart';
+import '../../shared/services/todo_service.dart';
 
 import 'datasources/remote_todo_datasource.dart';
 import 'todo_page.dart';

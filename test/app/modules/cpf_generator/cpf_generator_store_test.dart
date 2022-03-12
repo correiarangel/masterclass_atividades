@@ -1,208 +1,287 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
 import 'package:masterclass_atividades/app/modules/cpf_generator/cpf_generator_store.dart';
 
-class CpfGeneratorStoreMock extends CpfGeneratorStore {}
+class CpfGeneratorStoreMock extends Mock implements CpfGeneratorStore {}
 
 void main() {
   final store = CpfGeneratorStoreMock();
 
-  setUp(() {
+  setUpAll(() {
     debugPrint("Iniciando Suite tests CpfGeneratorStore");
+  });
+  setUp(() {
+    debugPrint("Iniciando Suite tests ");
   });
 
   tearDown(() {
+    debugPrint("Finalizando Suite test ");
+  });
+  tearDownAll(() {
     debugPrint("Finalizando Suite test CpfGeneratorStore");
   });
+  group('Caminho Feliz ;]', () {
+    test('Deve retornar String (changeCpf)', () async {
+      when(
+        () => store.changeCpf(cpf),
+      ).thenReturn(cpf);
 
-  test('Deve retornar String com 11 caracter (changeCpf)', () async {
-    var _resp = store.changeCpf('12345678912');
-    expect(_resp, isA<String>());
-    expect(_resp.length, 11);
-  });
-  test('Deve retornar String vazio (changeCpf)', () async {
-    var _resp = store.changeCpf('');
+      expect(cpf, isA<String>());
+      expect(cpf.length, 11);
+    });
+    test('Deve retornar String vazio (changeCpf)', () async {
+      var _resp = '';
+      when(() => store.changeCpf(_resp)).thenReturn(_resp);
 
-    expect(_resp, isA<String>());
-    expect(_resp.isEmpty, true);
-  });
+      expect(_resp, isA<String>());
+      expect(_resp.isEmpty, true);
+    });
+    test('Deve retornar true (isValid) ', () async {
+      var _resp = true;
+      when(() => store.isValid).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, true);
+    });
 
-  test('Deve retornar bool false/true (isValid) ', () async {
-    var _resp = store.isValid;
-    expect(_resp, isA<bool>());
-    expect(_resp, false);
-  });
+    test('Deve retornar String com 11 caracter (validateCPF)', () async {
+      var _resp = cpf;
 
-  test('Deve retornar String com 11 caracter ou null (validateCPF)', () async {
-    var _resp = store.validateCPF();
-    expect(_resp, isA<String>());
-    expect(_resp!.isEmpty, false);
-    expect(_resp.length > 11, true);
-  });
+      when(() => store.validateCPF()).thenReturn(_resp);
+      expect(_resp, isA<String>());
+      expect(_resp.length, 11);
+    });
 
-  test('Deve retornar String com mensage (validateCpfRemdon) ', () async {
-    var _resp = store.validateCpfRemdon(cpfString: '12332112321');
-    expect(_resp, isA<String>());
-    expect(_resp!.isEmpty, false);
-    expect(_resp.length >= 11, true);
-  });
+    test('Deve retornar String com mensage CPF VALIDO ;) ', () async {
+      var _resp = cpfValidMsg;
+      when(() => store.validateCpfRemdon(cpfString: cpfValid))
+          .thenReturn(_resp);
+      expect(_resp, isA<String>());
+      expect(_resp, 'CPF VALIDO ;)');
+    });
 
-  test('Deve retornar bool false (toChangesIsValidCpf) ', () async {
-    var _resp = store.toChangesIsValidCpf(value: false);
-    expect(_resp, isA<bool>());
-    expect(_resp, false);
-  });
+    test('Deve retornar bool true (toChangesIsValidCpf) ', () async {
+      var _resp = true;
+      when(() => store.toChangesIsValidCpf(value: _resp)).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, true);
+    });
 
-  test('Deve retornar bool true (toChangesIsValidCpf) ', () async {
-    var _resp = store.toChangesIsValidCpf(value: true);
-    expect(_resp, isA<bool>());
-    expect(_resp, true);
-  });
+    test('Deve retornar String com mensage Cpf valido (validateMaster) ',
+        () async {
+      var _resp = cpfValidMsg;
 
-  test('Deve retornar String com mensage Cpf valido (validateMaster) ',
-      () async {
-    var _resp = store.validateMaster(cpf: '50691575665');
-    expect(_resp, isA<String>());
-    expect(_resp!.isEmpty, false);
-    expect(_resp.length == 13, true);
-    expect(_resp, 'CPF VALIDO ;)');
-  });
+      when(() => store.validateMaster(cpf: '50691575665')).thenReturn(_resp);
+      expect(_resp, isA<String>());
+      expect(_resp, 'CPF VALIDO ;)');
+    });
 
-  test('Deve retornar String com mensage Cpf invalido (validateMaster) ',
-      () async {
-    var _resp = store.validateMaster(cpf: '50691575661');
-    expect(_resp, isA<String>());
-    expect(_resp!.isEmpty, false);
-    expect(_resp.length == 14, true);
-    expect(_resp, 'CPF IVALIDO :(');
-  });
+    test('Deve retornar bool true caso todos digitos iguais  (validateDigits) ',
+        () async {
+      var _resp = true;
+      when(() => store.validateDigits(valueCPF: '11111111111'))
+          .thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, true);
+    });
 
-  test('Deve retornar bool true caso todos digitos iguais  (validateDigits) ',
-      () async {
-    var _resp = store.validateDigits(valueCPF: '11111111111');
-    expect(_resp, isA<bool>());
-    expect(_resp, true);
-  });
+    test('Deve retornar int Decrement 10 (generateResultByDigit)', () async {
+      var _resp = 11;
 
-  test('Deve retornar bool false caso digitos diferentes (validateDigits) ',
-      () async {
-    var _resp = store.validateDigits(valueCPF: '12345678987');
-    expect(_resp, isA<bool>());
-    expect(_resp, false);
-  });
+      when(
+        () => store.generateResultByDigit(
+          decrementValue: 10,
+          numbers: [],
+          value: '12345678987',
+        ),
+      ).thenReturn(_resp);
+      expect(_resp, isA<int>());
+    });
 
-  test('Deve retornar int decrementValue = 10 (generateResultByDigit) ',
-      () async {
-    var _resp = store.generateResultByDigit(
-      decrementValue: 10,
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7],
-      value: '12345678987',
-    );
-    expect(_resp, isA<int>());
-  });
+    test('Deve retornar int Decrement 11 (generateResultByDigit) ', () async {
+      var _resp = 11;
+      when(
+        () => store.generateResultByDigit(
+          decrementValue: 10,
+          numbers: [],
+          value: '12345678987',
+        ),
+      ).thenReturn(_resp);
+      expect(_resp, isA<int>());
+    });
 
-  test('Deve retornar int decrementValue = 11 (generateResultByDigit) ',
-      () async {
-    var _resp = store.generateResultByDigit(
-      decrementValue: 11,
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7],
-      value: '12345678987',
-    );
-    expect(_resp, isA<int>());
-  });
+    test('Deve retornar bool true (checkDigits) ', () async {
+      var digit1 = 6;
+      var digit2 = 6;
+      var _resp = true;
+      when(
+        () => store.checkDigits(
+          digit1: digit1,
+          digit2: digit2,
+          value: '50691575665',
+        ),
+      ).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, true);
+    });
 
-  test('Deve retornar bool false (checkDigits) ', () async {
-    var digit1 = store.generateResultByDigit(
-      decrementValue: 10,
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7],
-      value: '12345678987',
-    );
-    var digit2 = store.generateResultByDigit(
-      decrementValue: 11,
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7],
-      value: '12345678987',
-    );
-    var _resp = store.checkDigits(
-      digit1: digit1,
-      digit2: digit2,
-      value: '12345678987',
-    );
-    expect(_resp, isA<bool>());
-    expect(_resp, false);
-  });
+    test('Deve retornar String com 11 caracter numero Cpf (generateNumberCPF) ',
+        () async {
+      var _resp = '12345678217';
+      when(
+        () => store.generateNumberCPF(),
+      ).thenReturn(_resp);
+      expect(_resp, isA<String>());
+      expect(_resp.length == 11, true);
+    });
 
-  test('Deve retornar bool true (checkDigits) ', () async {
-    var digit1 = store.generateResultByDigit(
-      decrementValue: 10,
-      numbers: [5, 0, 6, 9, 1, 5, 7, 5, 6, 6, 5],
-      value: '50691575665',
-    );
-    var digit2 = store.generateResultByDigit(
-      decrementValue: 11,
-      numbers: [5, 0, 6, 9, 1, 5, 7, 5, 6, 6, 5],
-      value: '50691575665',
-    );
-    var _resp = store.checkDigits(
-      digit1: digit1,
-      digit2: digit2,
-      value: '50691575665',
-    );
-    expect(_resp, isA<bool>());
-    expect(_resp, true);
-  });
+    test(
+        'Deve retornar String Remdon com 11 caracter numero Cpf (gerarRemdon) ',
+        () async {
+      var _resp = '12345678217';
+      when(
+        () => store.gerarRemdon(),
+      ).thenReturn(_resp);
+      expect(_resp, isA<String>());
+      expect(_resp.length == 11, true);
+    });
 
-  test('Deve retornar String com 11 caracter numero Cpf (generateNumberCPF) ',
-      () async {
-    var _resp = store.generateNumberCPF();
-    expect(_resp, isA<String>());
-    expect(_resp.isEmpty, false);
-    expect(_resp.length == 11, true);
-  });
+    test('Deve retornar String com mensage CPF VALIDO ;) (chackMsg) ',
+        () async {
+      var _resp = 'CPF VALIDO ;)';
+      when(
+        () => store.chackMsg('CPF VALIDO ;)'),
+      ).thenReturn(_resp);
+      expect(_resp, isA<String>());
 
-  test('Deve retornar String Remdon com 11 caracter numero Cpf (gerarRemdon) ',
-      () async {
-    var _resp = store.gerarRemdon();
-    expect(_resp, isA<String>());
-    expect(_resp.isEmpty, false);
-    expect(_resp.length == 11, true);
-  });
+      expect(_resp, 'CPF VALIDO ;)');
+    });
 
-  test('Deve retornar String com mensage (chackMsg) ', () async {
-    var _resp = store.chackMsg('CPF VALIDO ;)');
-    expect(_resp, isA<String>());
-    expect(_resp.isEmpty, false);
-    expect(_resp.length == 13, true);
-  });
+    test('Caso msg setada "CPF IVALIDO :(" retornar  true (checkError) ',
+        () async {
+      var _resp = true;
+      when(
+        () => store.checkError(msg: 'CPF VALIDO :('),
+      ).thenReturn(_resp);
+      expect(_resp, isA<bool>());
 
-  test('Deve retornar String vazia (chackMsg) ', () async {
-    var _resp = store.chackMsg('');
-    expect(_resp, isA<String>());
-    expect(_resp.isEmpty, true);
-    expect(_resp, '');
-  });
+      expect(_resp, true);
+    });
+    test('Deve retornar String com 14 caracter (validateMaster) ', () async {
+      var _resp = 'CPF IVALIDO :(';
 
-  test('Deve caso msg setada "CPF IVALIDO :(" retornar bool true (checkError) ',
-      () async {
-    var _resp = store.checkError(msg: 'CPF IVALIDO :(');
-    expect(_resp, isA<bool>());
-    expect(_resp, true);
-  });
+      when(() => store.validateMaster(cpf: '06144566665')).thenReturn(_resp);
+      expect(_resp.length == 14, true);
+    });
 
-  test('Deve caso msg setada "CPF IVALIDO :(" retornar bool true (checkError) ',
-      () async {
-    var _resp = store.checkError(msg: 'CPF IVALIDO :(');
-    expect(_resp, isA<bool>());
-    expect(_resp, true);
-  });
+    test('Caso msg setada "CPF IVALIDO :(" retornar bool true (checkError) ',
+        () async {
+      var _resp = true;
+      when(() => store.checkError(msg: 'CPF IVALIDO :(')).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, true);
+    });
+  }); //;]
 
-  test(
-      'Deve caso msg diferente "CPF IVALIDO :(" ou "CPF IVALIDO :(" '
-      'retornar bool false (checkError) ', () async {
-    var _resp = store.checkError(msg: '');
-    expect(_resp, isA<bool>());
-    expect(_resp, false);
+  group('Caminho Triste :[', () {
+    test('Deve retornar false (isValid) ', () async {
+      var _resp = false;
+      when(() => store.isValid).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, false);
+    });
+    test('Deve retornar  null (validateCPF)', () async {
+      // ignore: prefer_typing_uninitialized_variables
+      var _resp;
 
+      when(() => store.validateCPF()).thenReturn(_resp);
+      expect(_resp, null);
+    });
+
+    test('Deve retornar bool false (toChangesIsValidCpf) ', () async {
+      var _resp = false;
+      when(() => store.toChangesIsValidCpf(value: _resp)).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, false);
+    });
+
+    test('Deve retornar String com mensage Cpf invalido (validateMaster) ',
+        () async {
+      var _resp = 'CPF IVALIDO :(';
+
+      when(() => store.validateMaster(cpf: '06144566665')).thenReturn(_resp);
+      expect(_resp, isA<String>());
+      expect(_resp.isEmpty, false);
+    });
+
+    test('Deve retornar String com msg CPF IVALIDO (validateMaster) ',
+        () async {
+      var _resp = 'CPF IVALIDO :(';
+
+      when(() => store.validateMaster(cpf: '06144566665')).thenReturn(_resp);
+
+      expect(_resp, 'CPF IVALIDO :(');
+    });
+
+    test('Deve retornar null (validateMaster) ', () async {
+      var _resp;
+
+      when(() => store.validateMaster(cpf: '06144566665')).thenReturn(_resp);
+
+      expect(_resp, null);
+    });
+
+    test('Deve retornar bool false caso mais de 11 caracter (validateDigits) ',
+        () async {
+      var _resp = false;
+
+      when(() => store.validateDigits(valueCPF: '12345678987'))
+          .thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, false);
+    });
+
+    test('Deve retornar false (checkDigits) ', () async {
+      var digit1 = 1;
+      var digit2 = 2;
+      var _resp = false;
+      when(
+        () => store.checkDigits(
+          digit1: digit1,
+          digit2: digit2,
+          value: '12345678217',
+        ),
+      ).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, false);
+    });
+
+    test('Deve retornar String vazia (chackMsg) ', () async {
+      var _resp = '';
+      when(
+        () => store.chackMsg(''),
+      ).thenReturn(_resp);
+      expect(_resp, isA<String>());
+
+      expect(_resp, '');
+    });
+
+    test(
+        'Deve caso mensage diferente de "CPF VALIDO :)" ou "CPF IVALIDO :(" '
+        'retornar  false (checkError) ', () async {
+      var _resp = false;
+      when(
+        () => store.checkError(msg: ''),
+      ).thenReturn(_resp);
+      expect(_resp, isA<bool>());
+      expect(_resp, false);
+    });
   });
 }
+
+const String cpfValid = '12332112321';
+const String cpf = '12345678912';
+const String cpfInvalidMsg = 'CPF IVALIDO :(';
+const String cpfValidMsg = 'CPF VALIDO ;)';

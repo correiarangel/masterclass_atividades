@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:masterclass_atividades/app/shared/util/value/const_colors.dart';
 
 import '../home_store.dart';
 
 class ButtonBarNavigation extends StatelessWidget {
   final HomeStore controller;
-  const ButtonBarNavigation({Key? key, required this.controller})
-      : super(key: key);
+  final ScrollController scrollController;
+  const ButtonBarNavigation({
+    Key? key,
+    required this.controller,
+    required this.scrollController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +22,7 @@ class ButtonBarNavigation extends StatelessWidget {
           currentIndex: controller.currentIndex,
           onTap: controller.toChangesPage,
           items: const [
-
             BottomNavigationBarItem(
-
               icon: FaIcon(FontAwesomeIcons.bullseye),
               // ignore: deprecated_member_use
               label: "Atividades",
@@ -31,7 +34,6 @@ class ButtonBarNavigation extends StatelessWidget {
               // ignore: deprecated_member_use
               label: "GuitHub",
             ),
-            
             BottomNavigationBarItem(
               icon: FaIcon(
                 FontAwesomeIcons.userAlt,

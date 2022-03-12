@@ -58,13 +58,13 @@ class MockupPageState extends State<MockupPage> {
             CardMockup(
               number: '1',
               url: ConstStringUrl.mockupI,
-              text: 'Exercício 01',
+              text: 'Login Tinder/GetMoney Ex.01',
               themeController: themeController,
             ),
             CardMockup(
               number: '2',
               url: ConstStringUrl.mockupII,
-              text: 'Exercício 01',
+              text: 'Atividadde Masterclass Ex.01',
               themeController: themeController,
             ),
           ],

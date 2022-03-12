@@ -22,6 +22,7 @@ abstract class _CpfGeneratorStoreBase with Store {
     return validateCPF() == null;
   }
 
+  // ignore: body_might_complete_normally_nullable
   String? validateCPF() {
     if (cpftext == null || cpftext!.isEmpty) {
       return 'Digite ou Gere um CPF:';
@@ -36,6 +37,7 @@ abstract class _CpfGeneratorStoreBase with Store {
     }
   }
 
+  // ignore: body_might_complete_normally_nullable
   String? validateCpfRemdon({required String? cpfString}) {
     if (cpfString == null || cpfString.isEmpty) {
       return 'CPF_NULL';
@@ -100,11 +102,7 @@ abstract class _CpfGeneratorStoreBase with Store {
     required int digit2,
     required String value,
   }) {
-    return digit1 == int.parse(value[9]) &&
-        digit2 ==
-            int.parse(
-              value[10],
-            );
+    return digit1 == int.parse(value[9]) && digit2 == int.parse(value[10]);
   }
 
   bool checkEqualityNumber({required String value}) {

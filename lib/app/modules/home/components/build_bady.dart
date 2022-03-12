@@ -17,6 +17,7 @@ class BuildBody extends StatelessWidget {
     required this.themeController,
   }) : super(key: key);
 
+  // ignore: body_might_complete_normally_nullable
   Widget? returnBody({required currentIndex}) {
     if (currentIndex == 0) {
       return BodyAtividades(

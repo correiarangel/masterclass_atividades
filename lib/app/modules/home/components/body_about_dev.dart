@@ -17,24 +17,22 @@ class BodyAboutDev extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          CardAbout(
-            homeStore: homeStore,
-            themeController: themeController,
-          ),
-          AboutFavorits(
-            homeStore: homeStore,
-          ),
-          AboutSkills(
-            themeController: themeController,
-            homeStore: homeStore,
-          )
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        CardAbout(
+          homeStore: homeStore,
+          themeController: themeController,
+        ),
+        AboutFavorits(
+          homeStore: homeStore,
+        ),
+        AboutSkills(
+          themeController: themeController,
+          homeStore: homeStore,
+        )
+      ],
     );
   }
 }

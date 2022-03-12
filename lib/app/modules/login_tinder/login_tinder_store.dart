@@ -8,8 +8,10 @@ part 'login_tinder_store.g.dart';
 class LoginTinderStore = _LoginTinderStoreBase with _$LoginTinderStore;
 
 abstract class _LoginTinderStoreBase with Store {
-  dailog({required BuildContext context}) {
-    showDialog(
+  Future<DialogCustom?> dailog({
+    required BuildContext context,
+  }) async {
+    return showDialog<DialogCustom>(
       context: context,
       builder: (context) {
         return const DialogCustom(

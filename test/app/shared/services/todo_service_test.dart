@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:dio/native_imp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:masterclass_atividades/app/shared/services/todo_service.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_srtring_url.dart';
 import 'package:mocktail/mocktail.dart';
 
 class TodoServiceMock extends Mock implements TodoService {}

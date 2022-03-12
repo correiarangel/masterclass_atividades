@@ -14,7 +14,7 @@ class ConstStringUrl {
   static const String linkdin =
       'https://www.linkedin.com/in/marcos-fabiano-correia-rangel/';
   static const String guitHub =
-      'https://br.linkedin.com/in/marcos-fabiano-correia-rangel';
+      'https://github.com/correiarangel';
   static const String whatsap = 'https://wa.me/551999106907';
   static const String repositories =
       'https://github.com/correiarangel?tab=repositories';

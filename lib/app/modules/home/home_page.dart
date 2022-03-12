@@ -16,11 +16,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeStore> {
   final themaController = Modular.get<ThemeController>();
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  ScrollController scrollController = ScrollController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +35,15 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
           )
         ],
       ),
-      body: BuildBody(
-        controller: controller,
-        themeController: themaController,
+      body: SingleChildScrollView(
+        controller: scrollController,
+        child: BuildBody(
+          controller: controller,
+          themeController: themaController,
+        ),
       ),
       bottomNavigationBar: ButtonBarNavigation(
+        scrollController: scrollController,
         controller: controller,
       ),
     );
