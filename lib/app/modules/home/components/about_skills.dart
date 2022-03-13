@@ -1,7 +1,7 @@
 // יְהֹוָה my create
 
 import 'package:flutter/material.dart';
-import 'card_skills.dart';
+import 'card/card_skills.dart';
 import '../../../shared/controllers/theme_controller.dart';
 
 import '../home_store.dart';

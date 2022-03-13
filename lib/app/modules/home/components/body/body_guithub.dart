@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/controllers/theme_controller.dart';
-import '../../../shared/util/value/const_srtring_url.dart';
-import 'card_repository.dart';
+import '../../../../shared/controllers/theme_controller.dart';
+import '../../../../shared/util/value/const_srtring_url.dart';
+import '../card/card_repository.dart';
 
 class BodyGuitHub extends StatelessWidget {
   final ThemeController themeController;

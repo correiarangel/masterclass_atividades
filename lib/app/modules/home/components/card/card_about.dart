@@ -6,11 +6,11 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../shared/controllers/theme_controller.dart';
-import '../../../shared/util/value/const_colors.dart';
-import '../../../shared/util/value/const_srtring.dart';
-import '../../../shared/util/value/const_srtring_url.dart';
-import '../home_store.dart';
+import '../../../../shared/controllers/theme_controller.dart';
+import '../../../../shared/util/value/const_colors.dart';
+import '../../../../shared/util/value/const_srtring.dart';
+import '../../../../shared/util/value/const_srtring_url.dart';
+import '../../home_store.dart';
 
 // ignore: must_be_immutable
 class CardAbout extends StatelessWidget {

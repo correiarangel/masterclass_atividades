@@ -1,11 +1,11 @@
 // יְהֹוָה my create
 
 import 'package:flutter/material.dart';
-import '../../../shared/util/value/const_colors.dart';
+import '../../../../shared/util/value/const_colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import '../../../shared/controllers/theme_controller.dart';
+import '../../../../shared/controllers/theme_controller.dart';
 
-import '../home_store.dart';
+import '../../home_store.dart';
 
 // ignore: must_be_immutable
 class CardASkills extends StatelessWidget {

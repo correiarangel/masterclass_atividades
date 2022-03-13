@@ -226,6 +226,7 @@ void main() {
     });
 
     test('Deve retornar null (validateMaster) ', () async {
+      // ignore: prefer_typing_uninitialized_variables
       var _resp;
 
       when(() => store.validateMaster(cpf: '06144566665')).thenReturn(_resp);

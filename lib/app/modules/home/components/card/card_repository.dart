@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../shared/util/value/const_colors.dart';
-import '../../../../shared/controllers/theme_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import '../../../../shared/controllers/theme_controller.dart';
+import '../../../../shared/util/value/const_colors.dart';
 
 class CardRepository extends StatelessWidget {
   final ThemeController themeController;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../shared/controllers/theme_controller.dart';
+import '../../../../shared/controllers/theme_controller.dart';
 
-import '../home_store.dart';
+import '../../home_store.dart';
 import 'body_atividades.dart';
 import 'body_guithub.dart';
 import 'body_about_dev.dart';

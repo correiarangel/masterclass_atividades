@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colors.dart';
 
 import '../home_store.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../shared/util/value/const_srtring_url.dart';
+import '../../../../shared/util/value/const_srtring_url.dart';
 
-import '../../../shared/controllers/theme_controller.dart';
-import '../../../shared/util/value/const_srtring.dart';
-import 'card_custom.dart';
+import '../../../../shared/controllers/theme_controller.dart';
+import '../../../../shared/util/value/const_srtring.dart';
+import '../card/card_custom.dart';
 
 class BodyAtividades extends StatelessWidget {
   final ThemeController themeController;

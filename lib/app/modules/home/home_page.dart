@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../shared/controllers/theme_controller.dart';
-import 'components/build_bady.dart';
+import 'components/body/build_bady.dart';
 import 'components/button_bar_navigation.dart';
 
 import 'components/row_header.dart';

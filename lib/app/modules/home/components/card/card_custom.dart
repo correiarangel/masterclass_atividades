@@ -4,8 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../shared/controllers/theme_controller.dart';
-import '../../../shared/util/value/const_colors.dart';
+import '../../../../shared/controllers/theme_controller.dart';
+import '../../../../shared/util/value/const_colors.dart';
 
 class CardCustom extends StatelessWidget {
   final ThemeController themaController;

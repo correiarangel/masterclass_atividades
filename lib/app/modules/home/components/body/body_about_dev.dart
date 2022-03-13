@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:masterclass_atividades/app/modules/home/components/about_skills.dart';
-import 'card_about.dart';
-import '../home_store.dart';
-import '../../../shared/controllers/theme_controller.dart';
-import 'about_favorits.dart';
+import '../card/card_about.dart';
+import '../../home_store.dart';
+import '../../../../shared/controllers/theme_controller.dart';
+import '../about_favorits.dart';
 
 class BodyAboutDev extends StatelessWidget {
   final ThemeController themeController;
