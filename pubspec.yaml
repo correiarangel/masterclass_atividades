@@ -29,6 +29,8 @@ dependencies:
   dio: ^4.0.4
   shared_preferences: ^2.0.13
   dartion: ^1.0.7
+  flutter_bloc: ^8.0.1
+  bloc: ^8.0.3
   
 flutter_icons:
   image_path_ios: "images/logo/logo.png"
@@ -45,6 +47,7 @@ dev_dependencies:
   modular_test: ^1.0.1+1
   build_runner: ^2.1.7
   mocktail: ^0.3.0
+  bloc_test: ^9.0.3
 
 # The following section is specific to Flutter.
 flutter:

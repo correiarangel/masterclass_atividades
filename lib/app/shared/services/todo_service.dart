@@ -11,7 +11,7 @@ class TodoService {
     late Response response;
     try {
       response = await dio.get(url);
-    } catch (e, s) {
+    } on Exception catch (e, s) {
       log('GET/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),
@@ -31,7 +31,7 @@ class TodoService {
     try {
       var urlFull = '$url/$id';
       response = await dio.put(urlFull, data: jsonParam );
-    } catch (e, s) {
+    } on Exception catch (e, s) {
       log('PUT/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),
@@ -49,7 +49,7 @@ class TodoService {
     late Response response;
     try {
       response = await dio.post(url, data: jsonParam);
-    } catch (e, s) {
+    } on Exception catch (e, s) {
       log('POST/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),
@@ -68,7 +68,7 @@ class TodoService {
     try {
       var urlFull = '$url/$id';
       response = await dio.delete(urlFull);
-    } catch (e, s) {
+    } on Exception catch (e, s) {
       log('DELETE/ TodoService', error: e, stackTrace: s);
       response = Response(
         requestOptions: RequestOptions(path: ''),

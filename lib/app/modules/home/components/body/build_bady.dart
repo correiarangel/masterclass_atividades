@@ -17,7 +17,7 @@ class BuildBody extends StatelessWidget {
     required this.themeController,
   }) : super(key: key);
 
-  // ignore: body_might_complete_normally_nullable
+/*   // ignore: body_might_complete_normally_nullable
   Widget? returnBody({required currentIndex}) {
     if (currentIndex == 0) {
       return BodyAtividades(
@@ -33,14 +33,29 @@ class BuildBody extends StatelessWidget {
         homeStore: controller,
       );
     }
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
+    Widget _bodyWidget = const SizedBox.shrink();
     return Observer(
       builder: (context) {
         var _currentIndex = controller.currentIndex;
-        return returnBody(currentIndex: _currentIndex)!;
+        if (_currentIndex == 0) {
+          return _bodyWidget = BodyAtividades(
+            themeController: themeController,
+          );
+        } else if (_currentIndex == 1) {
+          return _bodyWidget = BodyGuitHub(
+            themeController: themeController,
+          );
+        } else if (_currentIndex == 2) {
+          return _bodyWidget = BodyAboutDev(
+            themeController: themeController,
+            homeStore: controller,
+          );
+        }
+        return _bodyWidget;
       },
     );
   }

@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 @immutable
 class Person {
@@ -25,7 +23,6 @@ class Person {
     );
   }
 
-  
   Person copyWith({
     int? id,
     String? name,
@@ -57,8 +54,4 @@ class Person {
       age: map['age']?.toInt() ?? 0,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory Person.fromJson(String source) => Person.fromMap(json.decode(source));
 }

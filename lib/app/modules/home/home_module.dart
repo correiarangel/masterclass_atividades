@@ -1,5 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:masterclass_atividades/app/modules/mockup/mockup_module.dart';
+import 'github_repos/blocs/github_bloc.dart';
+import 'github_repos/datasources/guithub_datasources.dart';
+import 'github_repos/interface/guithub_datasource.dart';
+import '../mockup/mockup_module.dart';
+import '../../shared/services/todo_service.dart';
 
 import '../../shared/interface/check_internet_interface.dart';
 import '../../shared/interface/general_version_interface.dart';
@@ -13,6 +18,17 @@ import 'home_page.dart';
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
+        Bind(
+      (i) => Dio(
+        BaseOptions(
+          receiveTimeout: 5000,
+          connectTimeout: 5000,
+        ),
+      ),
+    ),
+    Bind<IGuitHubDatasources>((i) => GuitHubDatasources(i.get())),
+    Bind((i)=> GitHubBloc(i.get())),
+    Bind((i) => TodoService(i.get())),
     Bind<IGeneralVersion>((i) => GeneralVersion()),
     Bind<ICheckInternet>((i) => CheckInternet()),
     Bind.lazySingleton((i) => HomeStore()),

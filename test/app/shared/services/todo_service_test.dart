@@ -66,7 +66,7 @@ void main() {
   group('Caminho feliz TodoService', () {
     test('Deve retorna response StatusCode 200', () async {
       when(() => service.get(url: 'url'))
-          .thenAnswer((invocation) async => response200);
+          .thenAnswer((_) async => response200);
 
       expect(response200, isA<Response>());
       expect(response200.statusCode, 200);
@@ -74,7 +74,7 @@ void main() {
 
     test('Deve retorna List com 6 posições em response.data', () async {
       when(() => service.get(url: 'url'))
-          .thenAnswer((invocation) async => response200);
+          .thenAnswer((_) async => response200);
       var list = response200.data['todos'] as List;
       expect(list.length, 6);
     });

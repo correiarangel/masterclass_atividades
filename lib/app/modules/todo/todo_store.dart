@@ -5,16 +5,20 @@ import 'repository/todo_repository.dart';
 
 class TodoStore extends ChangeNotifier {
   final TodoReposytory repository;
-  List<TodoModel> todos = [];
-  Map mapEdit = {};
-  String title = '';
+  List<TodoModel> _todos = [];
+  List<TodoModel> get todos => List<TodoModel>.unmodifiable(_todos);
+  // ignore: prefer_final_fields
+  Map _mapEdit = {};
+  Map get mapEdit => Map.unmodifiable(_mapEdit);
+  String _title = '';
+  String get title => _title;
 
   TodoStore(this.repository);
 
   Future<List<TodoModel>> getAllTodos() async {
-    todos = await repository.getTodos() ?? <TodoModel>[];
+    _todos = await repository.getTodos() ?? <TodoModel>[];
     notifyListeners();
-    return todos;
+    return _todos;
   }
 
   Future<Map> editTodo({required valueChecked, required String id}) async {
@@ -46,9 +50,9 @@ class TodoStore extends ChangeNotifier {
   }
 
   String? validateText() {
-    if (title.isEmpty) {
+    if (_title.isEmpty) {
       return 'Digite Um lembrete';
-    } else if (title.length < 5) {
+    } else if (_title.length < 5) {
       return "Muito curto para um lenbrete";
     } else {
       return null;
@@ -56,8 +60,8 @@ class TodoStore extends ChangeNotifier {
   }
 
   String changesTitle(String value) {
-    title = value;
-        notifyListeners();
-    return title;
+    _title = value;
+    notifyListeners();
+    return _title;
   }
 }

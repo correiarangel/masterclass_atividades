@@ -20,4 +20,6 @@ class ConstStringUrl {
       'https://github.com/correiarangel?tab=repositories';
   static const String repositMasterClass =
       'https://github.com/correiarangel/masterclass_atividades';
+       static const String guitHubRepsUrl =
+      'https://api.github.com/users/correiarangel/repos';
 }
