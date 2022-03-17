@@ -1,18 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'github_repos/blocs/github_bloc.dart';
-import 'github_repos/datasources/guithub_datasources.dart';
-import 'github_repos/interface/guithub_datasource.dart';
-import '../mockup/mockup_module.dart';
-import '../../shared/services/todo_service.dart';
 
 import '../../shared/interface/check_internet_interface.dart';
 import '../../shared/interface/general_version_interface.dart';
+import '../../shared/services/todo_service.dart';
 import '../../shared/util/check_internet.dart';
 import '../../shared/util/general_version.dart';
 import '../animations/animations_module.dart';
 import '../home/home_store.dart';
+import '../mockup/mockup_module.dart';
 import '../playground/playground_module.dart';
+import 'github_repos/blocs/github_bloc.dart';
+import 'github_repos/datasources/guithub_datasources.dart';
+import 'github_repos/datasources/interface/guithub_datasource_interface.dart';
 import 'home_page.dart';
 
 class HomeModule extends Module {

@@ -31,6 +31,7 @@ dependencies:
   dartion: ^1.0.7
   flutter_bloc: ^8.0.1
   bloc: ^8.0.3
+  uno: ^1.0.1+3
   
 flutter_icons:
   image_path_ios: "images/logo/logo.png"

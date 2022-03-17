@@ -83,7 +83,7 @@ void main() {
 
     test('Deve editar valor,retorna response statusCode, 200', () async {
 
-      when(() => todoRemote.editar(id: '0', param: resMap, url: ''))
+      when(() => todoRemote.editar(id: '0', jsonParam: resMap, url: ''))
           .thenAnswer((invocation) async => responseEdit);
       expect(responseEdit, isA<Response>());
       expect(responseEdit.statusCode, 200);
@@ -96,14 +96,14 @@ void main() {
           path: 'api',
         ),
       );
-      when(() => todoRemote.editar(id: '0', param: resMap, url: ''))
+      when(() => todoRemote.editar(id: '0', jsonParam: resMap, url: ''))
           .thenAnswer((invocation) async => response);
 
       expect(response.data[0], isA<Map>());
     });
     test('Deve editar valor,retorna isChecked igual true...', () async {
 
-      when(() => todoRemote.editar(id: '0', param: resMap, url: ''))
+      when(() => todoRemote.editar(id: '0', jsonParam:  resMap, url: ''))
           .thenAnswer((invocation) async => responseEdit);
       expect(responseEdit.data[0]['isChecked'], true);
     });
@@ -194,7 +194,7 @@ void main() {
 
     test('Deve retorna response statusCode, 500,ao tentar  criar novo a faser',
         () async {
-      when(() => todoRemote.addTodo(url: '', param: dataParam))
+      when(() => todoRemote.addTodo(url: '', jsonParam: dataParam))
           .thenAnswer((invocation) async => responseErroArgument);
 
       expect(responseErroArgument, isA<Response>());
@@ -202,7 +202,7 @@ void main() {
     });
     test('Deve retorna response data tipo List ,ao tentar  criar novo a faser ',
         () async {
-      when(() => todoRemote.addTodo(url: '', param: dataParam))
+      when(() => todoRemote.addTodo(url: '', jsonParam: dataParam))
           .thenAnswer((invocation) async => responseErroArgument);
 
       expect(responseErroArgument.data, isA<List>());
@@ -210,7 +210,7 @@ void main() {
     test(
         'Deve retorna errro Invalid argument(s) ,ao tentar criar novo a faser,',
         () async {
-      when(() => todoRemote.addTodo(url: '', param: dataParam))
+      when(() => todoRemote.addTodo(url: '', jsonParam: dataParam))
           .thenAnswer((invocation) async => responseErroArgument);
       expect(
           responseErroArgument.data[0]
@@ -221,7 +221,7 @@ void main() {
     test(
         'Deve retorna errro Invalid argument(s) ,ao tentar criar novo a faser,',
         () async {
-      when(() => todoRemote.addTodo(url: '', param: dataParam))
+      when(() => todoRemote.addTodo(url: '', jsonParam: dataParam))
           .thenAnswer((invocation) async => responseErroConect);
       expect(
           responseErroConect.data[0].toString().contains('Connection refused'),

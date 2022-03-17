@@ -1,50 +1,80 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 
-import '../../../shared/services/todo_service.dart';
-
 class RemoteTodoDataSource {
-  final TodoService service;
-
-  RemoteTodoDataSource(this.service);
+  final Dio dio;
+  RemoteTodoDataSource(this.dio);
 
   Future<Response>? getTodos({required url}) async {
-    final response = await service.get(url: url);
-    response;
+    late Response response;
+    try {
+      response = await dio.get(url);
+    } on Exception catch (e, s) {
+      log('GET/ TodoService', error: e, stackTrace: s);
+      response = Response(
+        requestOptions: RequestOptions(path: ''),
+        data: [e],
+        statusCode: 500,
+      );
+    }
     return response;
   }
 
   Future<Response>? addTodo({
     required url,
-    required Map<String, dynamic> param,
+    required Map<String, dynamic> jsonParam,
   }) async {
-    final response = await service.post(
-      url: url,
-      jsonParam: param,
-    );
-    return response;
-  }
-
-  Future<Response>? excluir({
-    required String id,
-    required String url,
-  }) async {
-    final response = await service.delete(
-      id: id,
-      url: url,
-    );
+    late Response response;
+    try {
+      response = await dio.post(url, data: jsonParam);
+    } on Exception catch (e, s) {
+      log('POST/ TodoService', error: e, stackTrace: s);
+      response = Response(
+        requestOptions: RequestOptions(path: ''),
+        data: [e],
+        statusCode: 500,
+      );
+    }
     return response;
   }
 
   Future<Response>? editar({
     required String id,
-    required String url,
-    required Map<String, dynamic> param,
+    required url,
+    required Map<String, dynamic> jsonParam,
   }) async {
-    final response = await service.put(
-      id: id,
-      url: url,
-      jsonParam: param,
-    );
+    late Response response;
+    try {
+      var urlFull = '$url/$id';
+      response = await dio.put(urlFull, data: jsonParam);
+    } on Exception catch (e, s) {
+      log('PUT/ TodoService', error: e, stackTrace: s);
+      response = Response(
+        requestOptions: RequestOptions(path: ''),
+        data: [e],
+        statusCode: 500,
+      );
+    }
+    return response;
+  }
+
+  Future<Response>? excluir({
+    required String id,
+    required url,
+  }) async {
+    late Response response;
+    try {
+      var urlFull = '$url/$id';
+      response = await dio.delete(urlFull);
+    } on Exception catch (e, s) {
+      log('DELETE/ TodoService', error: e, stackTrace: s);
+      response = Response(
+        requestOptions: RequestOptions(path: ''),
+        data: [e],
+        statusCode: 500,
+      );
+    }
     return response;
   }
 }

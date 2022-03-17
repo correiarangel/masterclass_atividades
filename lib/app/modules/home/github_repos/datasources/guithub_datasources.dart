@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import '../interface/guithub_datasource.dart';
 import '../model/guithub_model.dart';
 import '../../../../shared/util/value/const_srtring_url.dart';
+import 'interface/guithub_datasource_interface.dart';
 
 class GuitHubDatasources implements IGuitHubDatasources {
   final Dio dio;

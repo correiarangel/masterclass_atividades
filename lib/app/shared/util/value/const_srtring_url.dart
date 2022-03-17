@@ -22,4 +22,6 @@ class ConstStringUrl {
       'https://github.com/correiarangel/masterclass_atividades';
        static const String guitHubRepsUrl =
       'https://api.github.com/users/correiarangel/repos';
+static const String intoximeUrl =
+      'https://www.intoxianime.com/?rest_route=/wp/v2/posts&';
 }
