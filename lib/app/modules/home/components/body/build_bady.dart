@@ -17,23 +17,7 @@ class BuildBody extends StatelessWidget {
     required this.themeController,
   }) : super(key: key);
 
-/*   // ignore: body_might_complete_normally_nullable
-  Widget? returnBody({required currentIndex}) {
-    if (currentIndex == 0) {
-      return BodyAtividades(
-        themeController: themeController,
-      );
-    } else if (currentIndex == 1) {
-      return BodyGuitHub(
-        themeController: themeController,
-      );
-    } else if (currentIndex == 2) {
-      return BodyAboutDev(
-        themeController: themeController,
-        homeStore: controller,
-      );
-    }
-  } */
+
 
   @override
   Widget build(BuildContext context) {

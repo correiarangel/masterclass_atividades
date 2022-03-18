@@ -16,5 +16,5 @@ class IntoxianimeStateException extends IntoxianimeState {
 class IntoxianimeStateSuccess extends IntoxianimeState {
   final List<IntoxianimeModel> animeModels;
 
-  IntoxianimeStateSuccess({required this.animeModels});
+  IntoxianimeStateSuccess(this.animeModels);
 }

@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:masterclass_atividades/app/modules/intoxianime/blocs/intoxianime_bloc.dart';
 import 'package:masterclass_atividades/app/modules/intoxianime/repository/interface/intoxianime_repository_interface.dart';
@@ -25,7 +26,8 @@ class IntoxianimeModule extends Module {
     Bind.lazySingleton((i) => IntoxianimeStore()),
     Bind<IIntoxianimeDatasource>((i)=>IntoxianimeDatasource(i.get())),
     Bind<IIntoxianimeRepository>((i)=> IntoxianimeRepository(i.get())),
-    Bind((i)=>IntoxianimeBloc(i.get())),
+    //Bind((i)=> BlocProvider(create: (context)=> IntoxianimeBloc(i.get()))), 
+    Bind((i)=> IntoxianimeBloc(i.get())),
   ];
 
   @override

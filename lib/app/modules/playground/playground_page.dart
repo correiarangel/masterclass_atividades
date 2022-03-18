@@ -79,6 +79,12 @@ class PlaygroundPageState extends State<PlaygroundPage> {
             text: 'Todos (Serve Dartion) Ex.04',
             themeController: themeController,
           ),
+          CardExercicio(
+            number: '5',
+            rote: '/intoxiPage',
+            text: 'Intoxianime API c/ Bloc Ex.05',
+            themeController: themeController,
+          ),
           const SizedBox(height: 28.0),
         ],
       ),

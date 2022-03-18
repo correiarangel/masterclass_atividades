@@ -1,3 +1,5 @@
+import 'package:masterclass_atividades/app/modules/intoxianime/intoxianime_module.dart';
+import 'package:masterclass_atividades/app/modules/intoxianime/intoxianime_page.dart';
 import 'package:masterclass_atividades/app/modules/todo/todo_module.dart';
 
 import '../cpf_generator/cpf_generator_module.dart';
@@ -24,5 +26,6 @@ class PlaygroundModule extends Module {
     ModuleRoute(Modular.initialRoute, module: LoginTinderModule()),
     ModuleRoute(Modular.initialRoute, module: CpfGeneratorModule()),
     ModuleRoute(Modular.initialRoute, module: TodoModule()),
+    ModuleRoute(Modular.initialRoute, module: IntoxianimeModule(),),
   ];
 }

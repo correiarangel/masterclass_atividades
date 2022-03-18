@@ -9,9 +9,9 @@ import '../states/guithub_state.dart';
 class GitHubBloc extends Bloc<GuitHubEvent, GuitHubState> {
   final GuitHubDatasources sources;
   GitHubBloc(this.sources) : super(InitialGuitHubState()) {
-    on<FetchGuitHubEvent>(_fetchGuitHubReps);
+    on<FetchGuitHubEvent>(_fetchGuitHubRepsEvent);
   }
-  Future<void> _fetchGuitHubReps(FetchGuitHubEvent event, emit) async {
+  Future<void> _fetchGuitHubRepsEvent(FetchGuitHubEvent event, emit) async {
     emit(LoadingGuitHubState());
     try {
       final repoModels = await sources.fetchGuitHubReps();
