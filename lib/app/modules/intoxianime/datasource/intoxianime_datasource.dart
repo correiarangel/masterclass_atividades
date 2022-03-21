@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:masterclass_atividades/app/shared/util/value/const_srtring_url.dart';
+import '../../../shared/util/value/const_srtring_url.dart';
 import 'package:uno/uno.dart';
 import 'interface/intoxianime_datasource_interface.dart';
 

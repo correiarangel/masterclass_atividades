@@ -25,7 +25,6 @@ class IntoxianimeModule extends Module {
     Bind.lazySingleton((i) => IntoxianimeStore()),
     Bind<IIntoxianimeDatasource>((i)=>IntoxianimeDatasource(i.get())),
     Bind<IIntoxianimeRepository>((i)=> IntoxianimeRepository(i.get())),
-    //Bind((i)=> BlocProvider(create: (context)=> IntoxianimeBloc(i.get()))), 
     Bind((i)=> IntoxianimeBloc(i.get())),
   ];
 
