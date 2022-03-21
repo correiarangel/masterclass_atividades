@@ -26,6 +26,7 @@ class ListViewIntoxianime extends StatefulWidget {
 
 class _ListViewIntoxianimeState extends State<ListViewIntoxianime> {
   final ScrollController _scrollController = ScrollController();
+  // ignore: prefer_final_fields
   late List<IntoxianimeModel> _infinityAnimeModels = [];
   addList(List<IntoxianimeModel> animeModels) {}
   bool isAddInList = false;
@@ -51,7 +52,6 @@ class _ListViewIntoxianimeState extends State<ListViewIntoxianime> {
   @override
   Widget build(BuildContext context) {
     Widget listReturn = Container();
-    Widget progreess = Container();
     final state = widget.bloc.state;
     if (state is IntoxianimeStateInitial) {
       listReturn = const Padding(

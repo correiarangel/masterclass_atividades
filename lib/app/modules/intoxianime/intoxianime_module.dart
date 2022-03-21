@@ -1,14 +1,13 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:masterclass_atividades/app/modules/intoxianime/blocs/intoxianime_bloc.dart';
-import 'package:masterclass_atividades/app/modules/intoxianime/repository/interface/intoxianime_repository_interface.dart';
-import 'package:masterclass_atividades/app/modules/intoxianime/repository/intoxianime_repository.dart';
 import 'package:uno/uno.dart';
 
+import 'blocs/intoxianime_bloc.dart';
 import 'datasource/interface/intoxianime_datasource_interface.dart';
 import 'datasource/intoxianime_datasource.dart';
 import 'intoxianime_page.dart';
 import 'intoxianime_store.dart';
+import 'repository/interface/intoxianime_repository_interface.dart';
+import 'repository/intoxianime_repository.dart';
 
 class IntoxianimeModule extends Module {
   @override

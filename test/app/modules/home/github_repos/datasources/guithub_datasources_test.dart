@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:masterclass_atividades/app/modules/home/github_repos/datasources/guithub_datasources.dart';
 import 'package:mocktail/mocktail.dart';
 
+import 'package:masterclass_atividades/app/modules/home/github_repos/datasources/guithub_datasources.dart';
 import 'package:masterclass_atividades/app/modules/home/github_repos/model/guithub_model.dart';
 
-class GuitHubServiceMock extends Mock implements GuitHubDatasources {}
+class GuitHubDatasourcesMock extends Mock implements GuitHubDatasources {}
 
 void main() {
-  final service = GuitHubServiceMock();
+  final datasource = GuitHubDatasourcesMock();
   setUpAll(() {
     debugPrint("Iniciando Suite testes GuitHubService");
   });
@@ -27,7 +27,7 @@ void main() {
      test('Deve retornar Lista de GuitHubRepsModel com uma posição id = 0 ...',
       () async {
     List<GuitHubRepsModel> reps = [guitRep];
-    when(() => service.fetchGuitHubReps())
+    when(() => datasource.fetchGuitHubReps())
         .thenAnswer((invocation) async => reps);
 
     expect(reps, isA<List<GuitHubRepsModel>>());
@@ -39,7 +39,7 @@ void main() {
   group('Caminho Triste :[ fetchGuitHubReps', () {
     test('Deve retornar null ...', () async {
     const reps = null;
-    when(() => service.fetchGuitHubReps())
+    when(() => datasource.fetchGuitHubReps())
         .thenAnswer((invocation) async => reps);
 
     expect(reps, null);

@@ -4,7 +4,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:uno/uno.dart';
 
 import 'package:masterclass_atividades/app/modules/intoxianime/datasource/intoxianime_datasource.dart';
-import 'package:masterclass_atividades/app/modules/intoxianime/model/intoxianime_model.dart';
 
 class IntoxianimeDatasourceMock extends Mock implements IntoxianimeDatasource {}
 

@@ -28,8 +28,8 @@ class IntoxianimeRepository implements IIntoxianimeRepository {
       final resp = _list.map((jsn) => IntoxianimeModel.fromMap(jsn)).toList();
       return resp;
     } else {
-      List<IntoxianimeModel> list = [];
-      return list;
+     // List<IntoxianimeModel> list = [];
+       throw Exception('error fetching posts');
     }
   }
 }
