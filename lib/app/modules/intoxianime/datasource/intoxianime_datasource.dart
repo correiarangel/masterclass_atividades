@@ -10,11 +10,13 @@ class IntoxianimeDatasource implements IIntoxianimeDatasource {
   IntoxianimeDatasource(this.uno);
 
   @override
-  Future<Response> getIntoxiAnime(
-      {required int perPage, required int page}) async {
+  Future<Response> getIntoxiAnime({
+    required int page,
+    required int perPage,
+  }) async {
     late Response response;
     final String urlFull =
-        '${ConstStringUrl.intoximeUrl}/posts&page=$perPage&per_page=$page';
+        '${ConstStringUrl.intoximeUrl}/posts&page=$page&per_page=$perPage';
     try {
       response = await uno.get(urlFull);
     } on Exception catch (e, s) {

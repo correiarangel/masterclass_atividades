@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:masterclass_atividades/app/shared/controllers/theme_controller.dart';
-import 'package:masterclass_atividades/app/shared/util/value/const_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../shared/controllers/theme_controller.dart';
+import '../../../shared/util/value/const_colors.dart';
 
 class CardAnimeCustom extends StatelessWidget {
   final ThemeController themaController;
   final String imgHeaderPath;
   final String textHeader;
+   final String index;
   final String textButton;
   final String textLink;
   final String urlLink;
-    final String guidUrl;
+  final String guidUrl;
   final String description;
 
   const CardAnimeCustom({
@@ -21,6 +22,7 @@ class CardAnimeCustom extends StatelessWidget {
     required this.themaController,
     required this.imgHeaderPath,
     required this.textHeader,
+    required this.index,
     required this.textButton,
     required this.textLink,
     required this.description,
@@ -73,6 +75,16 @@ class CardAnimeCustom extends StatelessWidget {
                   ),
                 ],
               ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(index),
+                  const SizedBox(
+                    width: 12.0,
+                  ),
+                ],
+              ),
             ],
           ),
           Padding(
@@ -109,8 +121,8 @@ class CardAnimeCustom extends StatelessWidget {
                   ],
                 ),
                 ElevatedButton(
-                  onPressed: () async{
-                   if (urlLink.isNotEmpty) await launch(guidUrl);
+                  onPressed: () async {
+                    if (urlLink.isNotEmpty) await launch(guidUrl);
                   },
                   child: Padding(
                       padding: const EdgeInsets.only(left: 12.0, right: 12.0),

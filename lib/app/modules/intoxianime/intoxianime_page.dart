@@ -1,18 +1,14 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:masterclass_atividades/app/modules/intoxianime/components/card_anime_custom.dart';
-import 'package:masterclass_atividades/app/modules/intoxianime/components/listview_intoxianime.dart';
-import 'package:masterclass_atividades/app/modules/intoxianime/event/intoxianime_event.dart';
-import 'components/card_anime.dart';
-import 'states/intoxianime_state.dart';
-import '../../shared/controllers/theme_controller.dart';
+import 'components/listview_intoxianime.dart';
 
+import '../../shared/controllers/theme_controller.dart';
 import 'blocs/intoxianime_bloc.dart';
+import 'event/intoxianime_event.dart';
 import 'intoxianime_store.dart';
 
 class IntoxianimePage extends StatefulWidget {
@@ -39,9 +35,12 @@ class IntoxianimePageState extends State<IntoxianimePage> {
     });
   }
 
+  void eventFetch() => bloc.add(FetchIntoxianimeEvent());
+
   @override
   Widget build(BuildContext context) {
-    Widget listReturn = Container();
+    double _height = MediaQuery.of(context).size.height;
+/*     Widget listReturn = Container();
     final state = bloc.state;
     if (state is IntoxianimeStateInitial) {
       listReturn = const Padding(
@@ -111,10 +110,10 @@ class IntoxianimePageState extends State<IntoxianimePage> {
                 guidUrl: anime.guidUrl,
                 link: anime.link,
               ); */
-          },
-        ),
-      );
-    }
+          //},
+        //),
+      //);
+    //} */
 
     return Scaffold(
       appBar: AppBar(
@@ -150,8 +149,12 @@ class IntoxianimePageState extends State<IntoxianimePage> {
         ),
       ),
       body: SizedBox(
-        child: listReturn,
-        height: 600.0,
+        child: ListViewIntoxianime(
+          eventFetch: eventFetch,
+          themeController: themeController,
+          bloc: bloc,
+        ),
+        height: _height,
       ),
     );
   }

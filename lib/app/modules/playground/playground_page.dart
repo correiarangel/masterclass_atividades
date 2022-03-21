@@ -82,7 +82,7 @@ class PlaygroundPageState extends State<PlaygroundPage> {
           CardExercicio(
             number: '5',
             rote: '/intoxiPage',
-            text: 'Intoxianime API c/ Bloc Ex.05',
+            text: 'Lista infinita c/ Bloc Ex.05',
             themeController: themeController,
           ),
           const SizedBox(height: 28.0),

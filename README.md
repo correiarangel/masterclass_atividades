@@ -10,6 +10,7 @@
 # masterclass_atividades
 
 O aplicativo masterclass_atividade foi desenvolvido como atividade no curso Masterclass Flutterando.
+Esse projeto e para estudos e experiências com pacotes arquitetura etc,Possui mais de um gerenciador de estados mas isso não é algo recomendável um aplicativo em produção não poderia ter mais de um gerenciamento de estado . 
  
 
 ## Getting Started
