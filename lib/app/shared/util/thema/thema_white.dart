@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../value/const_colors.dart';
 
-import 'const_colors.dart';
+
+
 
 class ThemaWhite {
   static  ThemeData get theme => ThemeData(

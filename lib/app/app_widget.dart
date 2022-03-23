@@ -4,9 +4,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'shared/controllers/theme_controller.dart';
 
 
-import 'shared/util/value/thema_white.dart';
+import 'shared/util/thema/thema_white.dart';
+import 'shared/util/thema/theme_dark.dart';
 
-import 'shared/util/value/theme_dark.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);

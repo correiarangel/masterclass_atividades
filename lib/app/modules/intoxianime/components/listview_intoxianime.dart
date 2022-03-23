@@ -79,8 +79,6 @@ class _ListViewIntoxianimeState extends State<ListViewIntoxianime> {
         child: Center(
           child: TextButton.icon(
             onPressed: () {
-              //bloc.add();
-
               widget.bloc.add(FetchIntoxianimeEvent());
             },
             icon: const Icon(
@@ -100,7 +98,7 @@ class _ListViewIntoxianimeState extends State<ListViewIntoxianime> {
       for (var element in state.animeModels) {
         _infinityAnimeModels.add(element);
       }
-      debugPrint("ITENS LISTA  ${_infinityAnimeModels.length}");
+      debugPrint("ITENS LISTA -º- ${_infinityAnimeModels.length}");
       listReturn = Padding(
         padding: const EdgeInsets.only(top: 38.0),
         child: CustomScrollView(

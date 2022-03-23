@@ -8,6 +8,7 @@ part 'login_get_money_store.g.dart';
 class LoginGetMoneyStore = _LoginGetMoneyStoreBase with _$LoginGetMoneyStore;
 
 abstract class _LoginGetMoneyStoreBase with Store {
+  
   dailog({required BuildContext context}) {
     showDialog(
       context: context,

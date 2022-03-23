@@ -7,6 +7,7 @@ import 'package:masterclass_atividades/app/modules/todo/datasources/remote_todo_
 
 class RemoteTodoDataSourceMock extends Mock implements RemoteTodoDataSource {}
 
+
 Response getResponse({
   required data,
   required int statusCode,
